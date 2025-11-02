@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "tw:build": "tailwindcss build -i ./public/css/tailwind.css -o ./public/css/main.css --watch"
+    "build:css": "tailwindcss -i ./public/css/tailwind.css -o ./public/css/main.css --minify",
+    "postinstall": "npm run build:css"
   },
   "author": "Lissette Huilca Aguilar",
   "license": "ISC",
