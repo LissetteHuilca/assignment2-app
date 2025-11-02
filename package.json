@@ -16,8 +16,16 @@
     "express": "^5.1.0"
   },
   "keywords": [],
-  "description": "",
   "devDependencies": {
     "tailwindcss": "^3.4.18"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LissetteHuilca/assignment2-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LissetteHuilca/assignment2-app/issues"
+  },
+  "homepage": "https://github.com/LissetteHuilca/assignment2-app#readme",
+  "description": ""
 }

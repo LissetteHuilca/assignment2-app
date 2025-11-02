@@ -15,11 +15,11 @@ const path = require('path')
 const app = express(); // obtain the "app" object
 const PORT = process.env.PORT || 8080; // assign a port
 
-const projectData = require("./modules/projects")
-app.use(express.static('public'));
+const projectData = require("./modules/projects");
 
 app.set('view engine', 'ejs');
-app.set('views', __dirname + '/views'); 
+app.set('views', __dirname + '/views');
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
   res.render('home');
