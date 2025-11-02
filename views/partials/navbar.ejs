@@ -1,0 +1,28 @@
+<!-- views/partials/navbar.ejs -->
+
+<div class="navbar bg-base-100 px-4">
+    <div class="flex-1">
+      <a href="/" class="text-xl font-bold">Climate Solutions</a>
+    </div>
+    
+    <!-- Desktop -->
+    <div class="flex-none hidden md:block">
+        <ul class="menu menu-horizontal gap-2">
+            <li><a class="<%= (page == '/') ? 'active' : '' %>" href="/">Home</a></li>
+            <li><a class="<%= (page == '/solutions/projects') ? 'active' : '' %>" href="/solutions/projects">View Projects</a></li>
+            <li><a class="<%= (page == '/about') ? 'active' : '' %>" href="/about">About</a></li>
+        </ul>    
+    </div>
+
+    <!-- Mobile -->
+    <div class="flex-none md:hidden">
+        <details class="dropdown dropdown-end">
+            <summary class="btn">Menu</summary>
+            <ul class="menu dropdown-content bg-base-100 rounded-box z-[1] w-56 p-2 shadow">
+                <li><a class="<%= (page == '/') ? 'active' : '' %>" href="/">Home</a></li>
+                <li><a class="<%= (page == '/solutions/projects') ? 'active' : '' %>" href="/solutions/projects">View Projects</a></li>
+                <li><a class="<%= (page == '/about') ? 'active' : '' %>" href="/about">About</a></li>
+            </ul>
+        </details>  
+    </div>
+</div>

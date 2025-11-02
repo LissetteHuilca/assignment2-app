@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Projects</title>
+  </head>
+  <body class="min-h-screen">
+  <!-- Navbar -->
+  <%- include('partials/navbar', { page: '/solutions/projects' }) %>
+
+  <main class="container mx-auto p-4">
+    <div class="hero bg-base-200 rounded-xl p-8 mb-8">
+      <div class="hero-content text-center">
+        <div class="max-w-3xl">
+          <h1 class="text-4xl font-bold mb-4">Projects</h1>
+          <div class="flex flex-wrap gap-2 justify-center">
+            <a class="btn btn-outline" href="/solutions/projects?sector=Industry">Industry</a>
+            <a class="btn btn-outline" href="/solutions/projects?sector=Transportation">Transportation</a>
+            <a class="btn btn-outline" href="/solutions/projects?sector=Electricity">Electricity</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- Rendering the Table -->
+    <% if (projects && projects.length > 0) { %>
+        <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Sector</th>
+              <th>Summary</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% projects.forEach(p => { %>
+                <tr>
+                    <td class="font-semibold"><%= p.title %></td>
+                    <td>
+                        <a class="btn btn-sm" href="/solutions/projects?sector=<%= encodeURIComponent(p.sector) %>">
+                        <%= p.sector %>
+                        </a>
+                    </td>
+                    <td class="max-w-xl"><%= p.summary_short %></td>
+                    <td>
+                        <a class="btn btn-primary btn-sm"
+                            href="/solutions/projects/<%= p.id %>">details</a>
+                    </td> 
+                </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div> 
+    <% } else { %>
+        <div class="alert">No projects found.</div>
+    <% } %>
+   </main>
+  </body>
+</html>

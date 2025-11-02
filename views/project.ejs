@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Home</title>
+  </head>
+  <body class="min-h-screen">
+  <!-- Navbar -->
+  <%- include('partials/navbar', { page:""}) %>
+
+  <main class="container mx-auto p-4">
+    <div class="hero-content text-center">
+        <div class="max-w-3xl">
+          <h1 class="text-4xl font-bold mb-2"><%= project.title %></h1>
+          <p class="opacity-80">
+            Below, you will find detailed information about the project: <span class="font-semibold"><%= project.title %></span>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-2 items-start">
+        <div>
+            <img class="rounded-xl shadow w-full" src="<%= project.feature_img_url %>"
+            alt="<%= project.title %>">
+        </div>
+
+        <div class="prose max-w-none">
+            <h2>Introduction</h2>
+            <p><%= project.intro_short %></p>
+            <h2>Impact</h2>
+            <p><%= project.impact %></p>
+
+                <div class="flex flex-wrap gap-3 mt-6">
+                    <a class="btn btn-primary"
+                        href="<%= project.original_source_url %>"
+                        target="_blank" rel="noopener noreferrer">Original Source</a>
+                    <a class="btn" href="#" onclick="history.back(); return false;">Back</a>
+                </div>
+        </div>
+    </div>
+
+    <div class="mt-10">
+      <div class="card bg-base-100 shadow">
+        <div class="card-body">
+          <h3 class="card-title">Quote</h3>
+          <p id="quoteText" class="italic opacity-90">quote…</p>
+          <p id="quoteAuthor" class="opacity-70"></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            try{
+              const res = await fetch("https://dummyjson.com/quotes/random");
+              const q = await res.json();
+
+              const qt = document.getElementById("quoteText");
+              const qa = document.getElementById("quoteAuthor");
+
+              if (q && q.quote) qt.textContent = `“${q.quote}”`;
+              if (q && q.author) qa.textContent = `— ${q.author}`;
+            } catch(err) {
+            const qt = document.getElementById("quoteText");
+            qt.textContent = "Could not load quote.";
+            }
+        });
+    </script>
+
+  </body>
+</html>
